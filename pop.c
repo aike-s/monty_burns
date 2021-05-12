@@ -1,45 +1,35 @@
 #include "monty.h"
+
+#define ERROR -1
+#define SUCCESS 1
 /**
- * delete_nodeint_at_index - delete node and free memory
- * @head: Linked list
- * @index: index to add new node
- * Return: -1 or 1 if is success
+ * delete_dnodeint_at_index - Delete node in double linked list
+ * @head: double linked list
+ * @index: int
+ * Return: Always EXIT_SUCCESS.
  */
-int delete_nodeint_at_index(stack_t **head, unsigned int index)
+int _pop(stack_t **head)
 {
-	size_t i;
-	stack_t *next, *before, *index_node;
+	unsigned int i;
+	stack_t *tmp = *head;
 
-	if (!head || !*head) /*edge cases*/
-		return (-1);
+	if (head == NULL || *head == NULL)
+		return (ERROR);
+	for (i = 0; tmp->next; i++)
+		tmp = tmp->next;
 
-	before = *head; /*iterate list with tmp and for*/
+	if (tmp == NULL)
+		return (ERROR);
 
-	for (i = 0 ; index && i < index - 1 && before->next; i++)
-		before = before->next;
+	if (*head == tmp)
+		*head = tmp->next;
 
-	if (!before->next && index)
-		return (-1);
+	if (tmp->next)
+		tmp->next->prev = tmp->prev;
 
-	if (!index) /* delete head*/
-    {
-      *head = before->next;
-      free(before);
-      return (1);
-    }
+	if (tmp->prev)
+		tmp->prev->next = tmp->next;
 
-	if (!(*head)->next) /*delete last */
-    {
-      free(*head);
-      *head = NULL;
-      return (1);
-    }
-
-	/*delete middle element */
-	index_node = before->next;
-	next = index_node->next;
-	free(before->next);
-	before->next = next;
-	return (1);
+	free(tmp);
+	return (SUCCESS);
 }
-

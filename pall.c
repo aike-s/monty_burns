@@ -9,12 +9,12 @@ stack_t _pall(const stack_t *h)
 	size_t i = 0;
 
 	if (h == NULL)
-		return (0);
+		return (NULL);
 	while (h != NULL)
 	{
 		i++;
 		printf("%d\n", h->n);
 		h = h->next;
 	}
-	return (i);
+	return (NULL);
 }
