@@ -1,5 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
+/* LIBRARIES */
+
+#include <stdlib.h>
+#include <stdio.h>
 /*STRUCTURES*/
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -32,6 +36,7 @@ typedef struct instruction_s
 
 /*MAIN FUNCTIONS*/
 
+void perror_exit(int, int, char*, stack_t**);
 
 /*BUILT-IN FUNCTIONS*/
 
