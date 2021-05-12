@@ -1,10 +1,10 @@
-#include "lists.h"
+#include "monty.h"
 /**
- * print_dlistint - prints all the elements of a dlistint_t list
+ * _pall - prints all the elements of a stack_t list
  * @h: head in the dobly linked list
  * Return: the number of nodes
  **/
-size_t print_dlistint(const dlistint_t *h)
+stack_t _pall(const stack_t *h)
 {
 	size_t i = 0;
 
